@@ -14,6 +14,7 @@ public class GlobeControllerScript : MonoBehaviour
     float step;
     public ColorizeCountriesScript colorizeScript;
     public int selectedYear = 1991;
+    public GameObject globe;
 
     // Start is called before the first frame update
     void Start()
@@ -89,13 +90,13 @@ public class GlobeControllerScript : MonoBehaviour
         step = rotateSpeed * Time.deltaTime;
         if (OVRInput.Get(OVRInput.RawButton.RThumbstickLeft))
         {
-            transform.Rotate(0, step, 0);
+            globe.transform.Rotate(0, step, 0);
             Debug.Log("Right Thumbstick detected - Left");
         }
 
         if (OVRInput.Get(OVRInput.RawButton.RThumbstickRight))
         {
-            transform.Rotate(0, -step, 0);
+            globe.transform.Rotate(0, -step, 0);
             Debug.Log("Right Thumbstick detected - Right");
         }
 
