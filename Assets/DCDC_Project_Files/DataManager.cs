@@ -15,16 +15,16 @@ public class DataManager : MonoBehaviour
 {
     public Dictionary<int, List<DataFormatWorld>> dataPerYear;
 
-    public TMP_Text dataCountryUI;
-    public TMP_Text dataCo2emissionsUI;
+    //public TMP_Text dataCountryUI;
+    //public TMP_Text dataCo2emissionsUI;
 
     void Start()
     {
-        ResetDataUI();
+        //ResetDataUI();
         LoadCSVFiles();
     }
 
-    public void ResetDataUI()
+    /*public void ResetDataUI()
     {
         dataCountryUI.text = "";
         dataCo2emissionsUI.text = "";
@@ -34,7 +34,7 @@ public class DataManager : MonoBehaviour
     {
         dataCountryUI.text = data.countryName;
         dataCo2emissionsUI.text = data.co2emissions.ToString();
-    }
+    }*/
 
     void LoadCSVFiles()
     {

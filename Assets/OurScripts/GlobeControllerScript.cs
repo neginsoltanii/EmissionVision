@@ -13,7 +13,7 @@ public class GlobeControllerScript : MonoBehaviour
     public float rotateSpeed = 10f; // degrees per second
     float step;
     public ColorizeCountriesScript colorizeScript;
-    public int selectedYear = 1990;
+    public int selectedYear = 1991;
 
     // Start is called before the first frame update
     void Start()
@@ -27,25 +27,28 @@ public class GlobeControllerScript : MonoBehaviour
     void Update()
     {
         //Test code from g
-        if (OVRInput.GetUp(OVRInput.RawButton.Y) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+       /* if (OVRInput.GetUp(OVRInput.RawButton.Y) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
             colorizeScript.ColorizeCountries(selectedYear);
             Debug.Log("Hello From inside the if conidition");
             //colorizeScript.map.ToggleCountrySurface("Brazil", true, Color.green);
-        }
+        }*/
 
         // Handle year selection logic
         if (OVRInput.GetUp(OVRInput.RawButton.A))
         {
-            selectedYear = Mathf.Max(selectedYear - 1, 1991); // Adjust year bounds as needed
-            Debug.Log("Selected Year:" + selectedYear);
-            colorizeScript.ColorizeCountries(selectedYear);
+            //selectedYear = Mathf.Max(selectedYear - 1, 1991); // Adjust year bounds as needed
+            //Debug.Log("Selected Year:" + selectedYear);
+            //colorizeScript.ColorizeCountries(selectedYear);
+            colorizeScript.map.ToggleCountrySurface("Iran", true, Color.blue);
+
         }
         else if (OVRInput.GetUp(OVRInput.RawButton.B))
         {
-            selectedYear = Mathf.Min(selectedYear + 1, 2021); // Adjust year bounds as needed
-            Debug.Log("Selected Year:" + selectedYear);
-            colorizeScript.ColorizeCountries(selectedYear);
+            //selectedYear = Mathf.Min(selectedYear + 1, 2021); // Adjust year bounds as needed
+            //Debug.Log("Selected Year:" + selectedYear);
+            //colorizeScript.ColorizeCountries(selectedYear);
+            colorizeScript.map.ToggleCountrySurface("Iran", true, Color.red);
         }
         //End test
         //// Check if there is a connected gamepad
