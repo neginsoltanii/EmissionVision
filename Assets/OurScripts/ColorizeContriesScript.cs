@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WPM;
+using static OVRPlugin;
 
 public class ColorizeCountriesScript : MonoBehaviour
 {
     public DataManager dataManager;
     public WorldMapGlobe map;
+    
+    //public GlobeControllerScript globeController;
+    //int selectedYear;
 
     void Start()
     {
         map = WorldMapGlobe.instance;
+        
         //map.ToggleCountrySurface("Brazil", true, Color.green);
     }
+
+   /* void Update()
+    {
+        selectedYear = globeController.selectedYear;
+    }*/
 
     public void ColorizeCountries(int year)
     {
@@ -37,12 +47,13 @@ public class ColorizeCountriesScript : MonoBehaviour
             Color color = CalculateColor(entry.co2emissions, minCO2, maxCO2);
             //Applying the appropriate color to the contry
             map.ToggleCountrySurface(entry.countryName, true, color);
+            
         }
     }
 
     private Color CalculateColor(float value, float min, float max)
     {
         float normalized = (value - min) / (max - min);
-        return Color.Lerp(Color.green, Color.red, normalized);
+        return Color.Lerp(Color.white, Color.red, normalized);
     }
 }

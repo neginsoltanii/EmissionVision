@@ -1784,7 +1784,7 @@ namespace WPM {
                 ray = new Ray(cam.transform.position, cam.transform.forward);
             }
 #else
-            if (_VREnabled) {
+            if (!_VREnabled) {
                 ray = new Ray(cam.transform.position, cam.transform.forward);
             } else {
                 Vector3 mousePos;

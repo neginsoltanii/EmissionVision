@@ -1,118 +1,130 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using WPM;
 using Photon.Pun;
+using Photon.Realtime;
+using WPM;
 
-public class GlobeControllerScript : MonoBehaviourPun // Inherit from MonoBehaviourPun
+public class GlobeInteraction : MonoBehaviourPunCallbacks
 {
-    public DataManager dataManager;
-    public float rotateSpeed; // degrees per second
-    float step;
+    private bool isInteracting = false;
+    public float rotateSpeed = 100f;
+    private float step;
+    private int selectedYear;
     public ColorizeCountriesScript colorizeScript;
-    public int selectedYear;
+    public DataManager dataManager;
+    //public WorldMapGlobe map;
 
-    // Start is called before the first frame update
     void Start()
     {
-        colorizeScript.map.ToggleCountrySurface("Brazil", true, Color.blue);
+        selectedYear = 2018;
+        //map = WorldMapGlobe.instance;
     }
 
-    // Update is called once per frame
     void Update()
-    {
-        if (!photonView.IsMine) return; // If it's not the local player's object, don't execute the input code
-
-        HandleInput();
-        HandleRotation();
-    }
-
-    void HandleInput()
-    {
-        // Handle color change input
-        if (OVRInput.GetUp(OVRInput.RawButton.Y) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+    {/*
+        if (photonView.IsMine && isInteracting)
         {
-            photonView.RPC("ColorizeCountriesRPC", RpcTarget.All, selectedYear); // Call RPC to colorize countries for all players
-            Debug.Log("Hello from inside the if condition");
+            HandleRotation();
+            ChangeYear();
+        }
+        else
+        {
+            CheckForInteraction();
+        }*/
+        //}
+
+        //**Rotation code**
+        //private void HandleRotation()
+        //{
+        if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft) || Input.GetKeyDown(KeyCode.N))
+        {
+            //photonView.RPC("RotateLeftRPC", RpcTarget.All);
+            RotateLeftRPC();
+            //Debug.
+
         }
 
-        // Handle year selection logic
-        if (OVRInput.GetUp(OVRInput.RawButton.A))
+        if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || Input.GetKeyDown(KeyCode.M))
         {
-            SelectPreviousYear();
+            //photonView.RPC("RotateRightRPC", RpcTarget.All);
+            RotateRightRPC();
+
+
         }
-        else if (OVRInput.GetUp(OVRInput.RawButton.B))
+
+        if (OVRInput.Get(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.K))
         {
             SelectNextYear();
         }
+        if (OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.J))
+        {
+            SelectPreviousYear();
+        }
+
+        /*if (!OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft) && !OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight))
+        {
+            isInteracting = false;
+            photonView.RPC("ReleaseOwnership", RpcTarget.All);
+        }*/
     }
 
-    void HandleRotation()
+    //[PunRPC]
+    void RotateLeftRPC()
     {
         step = rotateSpeed * Time.deltaTime;
+        transform.Rotate(0, step, 0);
+    }
 
-        if (OVRInput.Get(OVRInput.RawButton.RThumbstickLeft))
-        {
-            RotateLeft();
-        }
+    //[PunRPC]
+    void RotateRightRPC()
+    {
+        step = rotateSpeed * Time.deltaTime;
+        transform.Rotate(0, -step, 0);
+    }
+    //**Rotation Code End**
 
-        if (OVRInput.Get(OVRInput.RawButton.RThumbstickRight))
+    //**Change Year Code**
+   // private void ChangeYear()
+    //{
+      /*  if (OVRInput.Get(OVRInput.Touch.One))
         {
-            RotateRight();
+            SelectNextYear();
         }
+        if (OVRInput.Get(OVRInput.Touch.Two))
+        {
+            SelectPreviousYear();
+        }*/
+
+        /*if (!OVRInput.Get(OVRInput.Touch.One) && !OVRInput.Get(OVRInput.Touch.Two))
+        {
+            isInteracting = false;
+            photonView.RPC("ReleaseOwnership", RpcTarget.All);
+        }*/
+    //}
+
+    void SelectNextYear()
+    {
+        selectedYear = Mathf.Min(selectedYear + 1, 2018);
+        //photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear);
+        UpdateSelectedYearRPC(selectedYear);
     }
 
     void SelectPreviousYear()
     {
-        selectedYear = Mathf.Max(selectedYear - 1, 1991); // Adjust year bounds as needed
-        photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear); // Call RPC to update selected year for all players
+        selectedYear = Mathf.Max(selectedYear - 1, 1991);
+        //photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear);
+        UpdateSelectedYearRPC(selectedYear);
     }
 
-    void SelectNextYear()
-    {
-        selectedYear = Mathf.Min(selectedYear + 1, 2018); // Adjust year bounds as needed
-        photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear); // Call RPC to update selected year for all players
-    }
-
-    [PunRPC]
+   
     void UpdateSelectedYearRPC(int year)
     {
         selectedYear = year;
         Debug.Log("Selected Year: " + selectedYear);
         colorizeScript.ColorizeCountries(selectedYear);
     }
+    //**Change Year Code End**
 
-    [PunRPC]
-    void ColorizeCountriesRPC(int year)
-    {
-        Debug.Log("Colorizing countries for year: " + year);
-        colorizeScript.ColorizeCountries(year);
-    }
-
-    void RotateLeft()
-    {
-        transform.Rotate(0, step, 0);
-        photonView.RPC("RotateLeftRPC", RpcTarget.Others); // Send RPC to other clients
-        Debug.Log("Right Thumbstick detected - Left");
-    }
-
-    void RotateRight()
-    {
-        transform.Rotate(0, -step, 0);
-        photonView.RPC("RotateRightRPC", RpcTarget.Others); // Send RPC to other clients
-        Debug.Log("Right Thumbstick detected - Right");
-    }
-
-    [PunRPC]
-    void RotateLeftRPC()
-    {
-        transform.Rotate(0, step, 0);
-    }
-
-    [PunRPC]
-    void RotateRightRPC()
-    {
-        transform.Rotate(0, -step, 0);
-    }
+    //**Interaction and Ownership handling**
+    
+    //**Interaction and Ownership handling End**
 }
