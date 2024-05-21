@@ -1,9 +1,9 @@
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
 using WPM;
+using PhotonPun = Photon.Pun;
+using PhotonRealtime = Photon.Realtime;
 
-public class GlobeInteraction : MonoBehaviourPunCallbacks
+public class GlobeInteraction : MonoBehaviour //PunCallbacks
 {
     private bool isInteracting = false;
     public float rotateSpeed = 100f;
@@ -11,12 +11,32 @@ public class GlobeInteraction : MonoBehaviourPunCallbacks
     private int selectedYear;
     public ColorizeCountriesScript colorizeScript;
     public DataManager dataManager;
+    public GameObject globe;
+
+    public GameObject globePrefab;
     //public WorldMapGlobe map;
 
     void Start()
     {
         selectedYear = 2018;
+
+        Debug.Log("BEFOREPassed spawnglobe method");
+        SpawnGlobe();
+        Debug.Log("Passed spawnglobe method");
+
         //map = WorldMapGlobe.instance;
+
+        // TEST
+        //PhotonNetwork.Instantiate("GlobePrefab", Vector3.zero, Quaternion.identity);
+
+    }
+
+    private void SpawnGlobe()
+    {
+        Debug.Log("Went to method");
+        var networkedGlobe = PhotonPun.PhotonNetwork.Instantiate(globePrefab.name, new Vector3(0, 0, 0), Quaternion.identity);
+        var photonGrabbable = networkedGlobe.GetComponent<PhotonGrabbableObject>();
+        photonGrabbable.TransferOwnershipToLocalPlayer();
     }
 
     void Update()
@@ -37,27 +57,29 @@ public class GlobeInteraction : MonoBehaviourPunCallbacks
         //{
         if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft) || Input.GetKeyDown(KeyCode.N))
         {
-            //photonView.RPC("RotateLeftRPC", RpcTarget.All);
+            //photonView.RPC("RotateLeftRPC", RpcTarget.Others);
             RotateLeftRPC();
-            //Debug.
+            Debug.Log("Pressed N Left");
 
         }
 
-        if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || Input.GetKeyDown(KeyCode.M))
+        if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || Input.GetKeyUp(KeyCode.M))
         {
-            //photonView.RPC("RotateRightRPC", RpcTarget.All);
+            //photonView.RPC("RotateRightRPC", RpcTarget.Others);
             RotateRightRPC();
-
+            Debug.Log("Pressed M Right");
 
         }
 
         if (OVRInput.Get(OVRInput.Button.One) || Input.GetKeyDown(KeyCode.K))
         {
             SelectNextYear();
+            Debug.Log("Pressed Next year K");
         }
         if (OVRInput.Get(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.J))
         {
             SelectPreviousYear();
+            Debug.Log("Pressed prev year J");
         }
 
         /*if (!OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft) && !OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight))
@@ -71,14 +93,14 @@ public class GlobeInteraction : MonoBehaviourPunCallbacks
     void RotateLeftRPC()
     {
         step = rotateSpeed * Time.deltaTime;
-        transform.Rotate(0, step, 0);
+        globe.transform.Rotate(0, step, 0);
     }
 
     //[PunRPC]
     void RotateRightRPC()
     {
         step = rotateSpeed * Time.deltaTime;
-        transform.Rotate(0, -step, 0);
+        globe.transform.Rotate(0, -step, 0);
     }
     //**Rotation Code End**
 
@@ -103,6 +125,7 @@ public class GlobeInteraction : MonoBehaviourPunCallbacks
 
     void SelectNextYear()
     {
+
         selectedYear = Mathf.Min(selectedYear + 1, 2018);
         //photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear);
         UpdateSelectedYearRPC(selectedYear);

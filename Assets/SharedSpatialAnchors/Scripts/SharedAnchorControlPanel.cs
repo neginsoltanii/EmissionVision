@@ -33,6 +33,7 @@ public class SharedAnchorControlPanel : MonoBehaviour
 
     [SerializeField]
     private GameObject cubePrefab;
+    
     [SerializeField]
     private GameObject roomLayoutPanelRowPrefab;
 
@@ -92,6 +93,7 @@ public class SharedAnchorControlPanel : MonoBehaviour
 
     private void Start()
     {
+        
         transform.parent = referencePoint;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
@@ -100,6 +102,8 @@ public class SharedAnchorControlPanel : MonoBehaviour
             renderStyleText.text = "Render: " + CoLocatedPassthroughManager.Instance.visualization.ToString();
         }
         ToggleRoomButtons(false);
+
+        
     }
 
     public void OnCreateModeButtonPressed()
@@ -174,6 +178,8 @@ public class SharedAnchorControlPanel : MonoBehaviour
         var photonGrabbable = networkedCube.GetComponent<PhotonGrabbableObject>();
         photonGrabbable.TransferOwnershipToLocalPlayer();
     }
+
+    
 
     public void ChangeUserPassthroughVisualization()
     {

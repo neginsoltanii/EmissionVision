@@ -14,7 +14,7 @@ public class ColorizeCountriesScript : MonoBehaviour
 
     void Start()
     {
-        map = WorldMapGlobe.instance;
+        //map = WorldMapGlobe.instance;
         
         //map.ToggleCountrySurface("Brazil", true, Color.green);
     }

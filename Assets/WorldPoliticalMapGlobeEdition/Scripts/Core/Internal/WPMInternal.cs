@@ -20,7 +20,6 @@ using WPM.Poly2Tri;
 using WPM.PolygonTools;
 using WPM.ClipperLib;
 using TMPro;
-using Oculus;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -781,16 +780,15 @@ namespace WPM {
             leftMouseButtonClick = simulatedMouseButtonClick == 0;
 #if VR_OCULUS
                 touchPadTouchStart = false;
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) {
+                if (OVRinput.GetDown(OVRinput.Button.PrimaryIndexTrigger)) {
                     leftMouseButtonClick = true;
-                
                     touchPadTouchStart = touchPadTouchStays = false;
                 }
-                if (OVRInput.GetDown(OVRInput.Touch.PrimaryTouchpad)) {
+                if (OVRinput.GetDown(OVRinput.Touch.PrimaryTouchpad)) {
                     touchPadTouchStart = touchPadTouchStays = true;
                     leftMouseButtonPressed = false;
                 }
-            if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick) != Misc.Vector2zero) {
+            if (OVRinput.Get(OVRinput.Axis2D.PrimaryThumbstick) != Misc.Vector2zero) {
                 touchPadTouchStays = true;
                 hasDragged = true;
                 mouseStartedDragging = true;
@@ -808,7 +806,7 @@ namespace WPM {
             leftMouseButtonPressed = leftMouseButtonClick || simulatedMouseButtonPressed == 0;
 
 #if VR_OCULUS
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)) {
+                if (OVRinput.Get(OVRinput.Button.PrimaryIndexTrigger)) {
                     leftMouseButtonPressed = true;
                 }
 #elif VR_GOOGLE
@@ -822,10 +820,10 @@ namespace WPM {
             // LEFT RELEASED
             leftMouseButtonRelease = simulatedMouseButtonRelease == 0;
 #if VR_OCULUS
-                if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)) {
+                if (OVRinput.GetUp(OVRinput.Button.PrimaryIndexTrigger)) {
                     leftMouseButtonRelease = true;
                 }
-                if (OVRInput.GetUp(OVRInput.Touch.PrimaryTouchpad)) {
+                if (OVRinput.GetUp(OVRinput.Touch.PrimaryTouchpad)) {
                     touchPadTouchStays = false;
                 }
 #elif VR_GOOGLE
@@ -844,7 +842,7 @@ namespace WPM {
             rightMouseButtonClick = input.GetMouseButtonDown(1) || simulatedMouseButtonClick == 1;
 
 #if VR_OCULUS
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad)) {
+                if (OVRinput.GetDown(OVRinput.Button.PrimaryTouchpad)) {
                     rightMouseButtonClick = true;
                     touchPadTouchStays = touchPadTouchStart = false;
                 }
@@ -1250,7 +1248,7 @@ namespace WPM {
                         if (_dragConstantSpeed) {
                             mouseDragStart = input.mousePosition;
                         } else {
-                            mouseDragStart = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+                            mouseDragStart = OVRinput.Get(OVRinput.Axis2D.PrimaryTouchpad);
                         }
 
 #else
@@ -1299,9 +1297,9 @@ namespace WPM {
 																												dragDirection.y *= -1.0f;
 																												dragDirection *= distFactor * _mouseDragSensitivity * Time.deltaTime * 60f;
 #elif VR_OCULUS
-                            dragDirection = (mouseDragStart - (Vector3)OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad));
+                            dragDirection = (mouseDragStart - (Vector3)OVRinput.Get(OVRinput.Axis2D.PrimaryTouchpad));
                             if (dragDirection == Misc.Vector3zero) {
-                                dragDirection = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+                                dragDirection = OVRinput.Get(OVRinput.Axis2D.PrimaryThumbstick);
                             }
                             if (_rotationAxisAllowed == ROTATION_AXIS_ALLOWED.X_AXIS_ONLY) {
                                 dragDirection.y = 0;
@@ -1431,8 +1429,8 @@ namespace WPM {
                         float wheel = input.GetAxis("Mouse ScrollWheel");
 #if VR_OCULUS
                         if (wheel == 0) {
-                            if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) {
-                                wheel = -OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+                            if (OVRinput.Get(OVRinput.Button.PrimaryHandTrigger)) {
+                                wheel = -OVRinput.Get(OVRinput.Axis2D.PrimaryThumbstick).y;
                             }
                         }
 #endif
@@ -1487,6 +1485,7 @@ namespace WPM {
 
             // Ensure camera is within min/max range
             CheckCamMinMaxDistance(cam);
+            
 
             // Ensure camera looks straight (up or aligned with horizon depending on tilt)
             KeepCameraStraight();
@@ -1506,7 +1505,7 @@ namespace WPM {
 #if VR_GOOGLE
 						mouseDragStart = GvrController.TouchPos;
 #elif VR_OCULUS
-                        mouseDragStart = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+                        mouseDragStart = OVRinput.Get(OVRinput.Axis2D.PrimaryTouchpad);
 #else
                         mouseDragStart = input.mousePosition;
                         UpdateCursorLocation(); // _cursorLocation has not been set yet so we call CheckMousePos before any interaction
@@ -1549,9 +1548,9 @@ namespace WPM {
 							dragDirection.y *= -1.0f;
 																												dragDirection *= distFactor * _mouseDragSensitivity * Time.deltaTime * 60f;
 #elif VR_OCULUS
-                            dragDirection = (mouseDragStart - (Vector3)OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad));
+                            dragDirection = (mouseDragStart - (Vector3)OVRinput.Get(OVRinput.Axis2D.PrimaryTouchpad));
                             if (dragDirection == Misc.Vector3zero) {
-                                dragDirection = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+                                dragDirection = OVRinput.Get(OVRinput.Axis2D.PrimaryThumbstick);
                             }
                             dragDirection.y *= -1.0f;
                             dragDirection *= distFactor * _mouseDragSensitivity * Time.deltaTime * 60f;
@@ -1777,14 +1776,14 @@ namespace WPM {
 				}
 #elif VR_OCULUS
             if (OVR_Manager != null && OVR_Manager.gameObject.activeInHierarchy) {
-                Vector3 controllerPos = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-                Vector3 controllerDir = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch) * Vector3.forward;
+                Vector3 controllerPos = OVRinput.GetLocalControllerPosition(OVRinput.Controller.RTouch);
+                Vector3 controllerDir = OVRinput.GetLocalControllerRotation(OVRinput.Controller.RTouch) * Vector3.forward;
                 ray = new Ray(controllerPos, controllerDir);
             } else {
                 ray = new Ray(cam.transform.position, cam.transform.forward);
             }
 #else
-            if (!_VREnabled) {
+            if (_VREnabled) {
                 ray = new Ray(cam.transform.position, cam.transform.forward);
             } else {
                 Vector3 mousePos;

@@ -10,7 +10,7 @@ namespace WPM {
 
         public GameObject rocketPrefab;
 
-        public WorldMapGlobe map;
+        WorldMapGlobe map;
         GUIStyle labelStyle, labelStyleShadow, buttonStyle, sliderStyle, sliderThumbStyle;
         ColorPicker colorPicker;
         bool changingFrontiersColor;
@@ -27,7 +27,7 @@ namespace WPM {
             animatingField = true;
 #endif
             map.earthInvertedMode = false;
-            
+
             // UI Setup - non-important, only for this demo
             labelStyle = new GUIStyle();
             labelStyle.alignment = TextAnchor.MiddleCenter;
@@ -83,10 +83,6 @@ namespace WPM {
                 Vector2 latLon = Conversion.GetLatLonFromSpherePoint(sphereLocation);
                 Debug.Log("Clicked on Latitude: " + latLon.x + ", Longitude: " + latLon.y);
             };
-
-            // Hide the GUI permanently
-            avoidGUI = true;
-
 
         }
 
@@ -267,10 +263,10 @@ namespace WPM {
 
 
         void Update() {
-            //// Hide the Gui permanently
-            //if (Input.GetKeyDown(KeyCode.G)) {
-            //    avoidGUI = !avoidGUI;
-            //}
+
+            if (Input.GetKeyDown(KeyCode.G)) {
+                avoidGUI = !avoidGUI;
+            }
 
             // Animates the camera field of view (just a cool effect at the begining)
             if (animatingField) {
