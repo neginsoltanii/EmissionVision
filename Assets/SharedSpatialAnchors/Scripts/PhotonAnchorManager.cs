@@ -100,6 +100,14 @@ public class PhotonAnchorManager : PhotonPun.MonoBehaviourPunCallbacks
             if (controlPanel)
                 controlPanel.StatusText.text = $"Status: {PhotonPun.PhotonNetwork.NetworkClientState}";
         }
+
+        //For testing purposes
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+        {
+            OnCreateRoomButtonPressed();
+        }
+        //*
+
     }
 
     #endregion

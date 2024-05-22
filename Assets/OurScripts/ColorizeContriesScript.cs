@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using static OVRPlugin;
 public class ColorizeCountriesScript : MonoBehaviour
 {
     public DataManager dataManager;
-    public WorldMapGlobe map;
+    //public WorldMapGlobe map;
     
     //public GlobeControllerScript globeController;
     //int selectedYear;
@@ -19,13 +20,14 @@ public class ColorizeCountriesScript : MonoBehaviour
         //map.ToggleCountrySurface("Brazil", true, Color.green);
     }
 
-   /* void Update()
+    /* void Update()
+     {
+         selectedYear = globeController.selectedYear;
+     }*/
+    [PunRPC]
+    public void ColorizeCountries(int year, GameObject globe)
     {
-        selectedYear = globeController.selectedYear;
-    }*/
-
-    public void ColorizeCountries(int year)
-    {
+        WorldMapGlobe globeScript = globe.GetComponent<WorldMapGlobe>();
         List<DataFormatWorld> data = dataManager.GetDataForYear(year);
         if (data == null)
         {
@@ -46,7 +48,7 @@ public class ColorizeCountriesScript : MonoBehaviour
         {
             Color color = CalculateColor(entry.co2emissions, minCO2, maxCO2);
             //Applying the appropriate color to the contry
-            map.ToggleCountrySurface(entry.countryName, true, color);
+            globeScript.ToggleCountrySurface(entry.countryName, true, color);
             
         }
     }

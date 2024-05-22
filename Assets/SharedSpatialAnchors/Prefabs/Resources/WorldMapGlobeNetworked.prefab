@@ -572,6 +572,7 @@ GameObject:
   - component: {fileID: -5486952210277217927}
   - component: {fileID: 7991879063188750820}
   - component: {fileID: -6688978051257570587}
+  - component: {fileID: -4992002008911229736}
   m_Layer: 0
   m_Name: WorldMapGlobeNetworked
   m_TagString: Untagged
@@ -587,7 +588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7396151283535584159}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17471422, y: 0.8436631, z: 0.10294477, w: 0.4971015}
+  m_LocalRotation: {x: 0.085721545, y: -0.41393292, z: 0.18377861, w: 0.88743275}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3531,7 +3532,7 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 1
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
   - {fileID: -1208514937380598629}
   - {fileID: 6252590898031954898}
@@ -3688,6 +3689,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118420a922675d145ade2a28e327d7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4992002008911229736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396151283535584159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c493910d81f67941a139733e5733401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedYear: 2018
+  globeControllerScript: {fileID: 0}
+  colorizeCountriesScript: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!1 &7890797501656919946
 GameObject:
   m_ObjectHideFlags: 0

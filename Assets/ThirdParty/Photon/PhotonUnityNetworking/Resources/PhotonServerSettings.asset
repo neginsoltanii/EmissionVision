@@ -56,6 +56,12 @@ MonoBehaviour:
   - RotateRightRPC
   - UpdateSelectedYearRPC
   - ReleaseOwnership
+  - RotateRPC
+  - SelectNextYear
+  - SelectPreviousYear
+  - ColorizeCountries
+  - updateYearRPC
+  - UpdateYearRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
