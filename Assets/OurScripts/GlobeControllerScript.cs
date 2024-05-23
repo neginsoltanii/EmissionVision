@@ -11,12 +11,15 @@ public class GlobeControllerScript : MonoBehaviour //PunCallbacks
     private float step;
     private float rotationY;
     public float thumbstickThreshold = 0.1f;  // Tröskelvärde för att avgöra om thumbsticken används
-    //public int selectedYear;
-    //public ColorizeCountriesScript colorizeScript;
-    public DataManager dataManager;
+    public int selectedYear;
+    public ColorizeCountriesScript colorizeScript;
+    //public DataManager dataManager;
     public GameObject globe;
-    public GlobePhotonColorControlScript globePhotonScript;
+    //public WorldMapGlobe globeScript;
+    //public GlobePhotonColorControlScript globePhotonScript;
     //public PhotonView photonView;
+
+    private int globeID;
 
 
     public GameObject globePrefab;
@@ -24,9 +27,6 @@ public class GlobeControllerScript : MonoBehaviour //PunCallbacks
 
     void Start()
     {
-        //selectedYear = 2018;
-
-        //map = WorldMapGlobe.instance;
 
     }
 
@@ -50,20 +50,20 @@ public class GlobeControllerScript : MonoBehaviour //PunCallbacks
             //photonView.RPC("RotateLeftRPC", RpcTarget.Others);
             rotationY = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).x;
             RotateRPC(rotationY);
-            Debug.Log("Pressed N or thumb");
+            //Debug.Log("Pressed N or thumb");
 
         }
 
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
             //selectedYear = Mathf.Min(selectedYear + 1, 2018);
-            globePhotonScript.SelectNextYear();
+            SelectNextYear();
             Debug.Log("Pressed Next year ");
         }
         if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
             //selectedYear = Mathf.Max(selectedYear - 1, 1991);
-            globePhotonScript.SelectPreviousYear();
+            SelectPreviousYear();
             Debug.Log("Pressed prev year ");
         }
     }
@@ -79,10 +79,13 @@ public class GlobeControllerScript : MonoBehaviour //PunCallbacks
 
         var networkedGlobe = PhotonNetwork.Instantiate(globePrefab.name, new Vector3(0, 0, 0), Quaternion.identity);
         Debug.Log("Instantiated Globe");
-
+        globe = networkedGlobe.gameObject;
+        //Pho
         var photonGrabbable = networkedGlobe.GetComponent<PhotonGrabbableObject>();
-        globe = photonGrabbable.gameObject;
-        globePhotonScript = globe.GetComponent<GlobePhotonColorControlScript>();
+        globeID = networkedGlobe.GetComponent<PhotonPun.PhotonView>().ViewID;
+
+        //globePhotonScript = globe.GetComponent<GlobePhotonColorControlScript>();
+        selectedYear = 2018;
         //photonView = networkedGlobe.GetComponent<PhotonView>();
 
         if (photonGrabbable == null)
@@ -102,67 +105,54 @@ public class GlobeControllerScript : MonoBehaviour //PunCallbacks
         globe.transform.Rotate(0, step, 0);
     }
 
-    //[PunRPC]
-    /*void RotateRightRPC()
+
+
+
+    //These two methods need to be changed to get year from SLIDER and then use the ** Marked line** only
+    public void SelectNextYear()
     {
-        step = rotateSpeed * Time.deltaTime;
-        globe.transform.Rotate(0, -step, 0);
-    }*/
-    //**Rotation Code End**
+        Debug.Log("Pressed to select next year");
+        //selectedYear = Mathf.Min(selectedYear + 1, 2018);
 
-    //**Change Year Code**
-    // private void ChangeYear()
-    //{
-    /*  if (OVRInput.Get(OVRInput.Touch.One))
-      {
-          SelectNextYear();
-      }
-      if (OVRInput.Get(OVRInput.Touch.Two))
-      {
-          SelectPreviousYear();
-      }*/
+        //***
+        gameObject.GetComponent <PhotonPun.PhotonView>().RPC("UpdateYearRPC", RpcTarget.All, selectedYear);
+        //***
 
-    /*if (!OVRInput.Get(OVRInput.Touch.One) && !OVRInput.Get(OVRInput.Touch.Two))
-    {
-        isInteracting = false;
-        photonView.RPC("ReleaseOwnership", RpcTarget.All);
-    }*/
-    //}
-    /*
-    //[PunRPC]
-    //void SelectNextYear()
-    {
-
-        selectedYear = Mathf.Min(selectedYear + 1, 2018);
-        //photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear);
-        //UpdateSelectedYearRPC(selectedYear);
-
-        Debug.Log("Selected Year: " + selectedYear);
-        colorizeScript.ColorizeCountries(selectedYear, globe);
+        Debug.Log("This is after the RPC call next year");
     }
-    [PunRPC]
-    void SelectPreviousYear()
+
+    public void SelectPreviousYear()
     {
-        selectedYear = Mathf.Max(selectedYear - 1, 1991);
-        //photonView.RPC("UpdateSelectedYearRPC", RpcTarget.All, selectedYear);
-        //UpdateSelectedYearRPC(selectedYear);
+        Debug.Log("Pressed to select previous year");
+        //selectedYear = Mathf.Max(selectedYear - 1, 1991);
+        
+        gameObject.GetComponent<PhotonPun.PhotonView>().RPC("UpdateYearRPC", RpcTarget.All, selectedYear);
+        Debug.Log("This is after the RPC call prev year");
+        //UpdateYearRPC(selectedYear);
+        //colorizeCountriesScript.ColorizeCountries(selectedYear, this.gameObject);
+        //photonView.RPC("colorizeScript.ColorizeCountries", RpcTarget.All, selectedYear, globe);
+    }
 
-        Debug.Log("Selected Year: " + selectedYear);
-        colorizeScript.ColorizeCountries(selectedYear, globe);
-    }*/
+    //Change above methods for SLIDER logic
 
-    /*
+
+
+
+
     [PunRPC]
-    void UpdateSelectedYearRPC(int year)
+    public void UpdateYearRPC(int year)
     {
-        selectedYear = year;
-        Debug.Log("Selected Year: " + selectedYear);
-        colorizeScript.ColorizeCountries(selectedYear, globe);
-    }*/
+        Debug.Log("This is the first line within RPC method UpdateYearRPC");
+        GameObject myGlobe = PhotonPun.PhotonView.Find(globeID).gameObject;
+        Debug.Log("Updated to: " + selectedYear);
+        colorizeScript.ColorizeCountries(year, myGlobe);
+        //photonView.RPC("colorizeScript.ColorizeCountries", RpcTarget.All, selectedYear);
+        Debug.Log("This is the last line within RPC method UpdateYearRPC");
+    }
 
-    //**Change Year Code End**
+
 
     //**Interaction and Ownership handling**
-    
+
     //**Interaction and Ownership handling End**
 }
