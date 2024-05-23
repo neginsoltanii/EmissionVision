@@ -10,18 +10,18 @@ public class SliderSyncDirect : MonoBehaviourPunCallbacks, IPunObservable
 
     void Start()
     {
-        if (yearSlider != null)
-        {
-            // Setting the Slider's minimum and maximum values
-            //yearSlider.minValue = 1990;
-            //yearSlider.maxValue = 2018;
-            //yearSlider.onValueChanged.AddListener(delegate { UpdateYearText(); });
-        }
+        
     }
 
     void Update()
     {
-        
+        if (yearSlider != null)
+        {
+            // Setting the Slider's minimum and maximum values
+            yearSlider.minValue = 1990;
+            yearSlider.maxValue = 2018;
+            yearSlider.onValueChanged.AddListener(delegate { UpdateYearText(); });
+        }
 
         // Initialise year text
         UpdateYearText();
@@ -29,7 +29,7 @@ public class SliderSyncDirect : MonoBehaviourPunCallbacks, IPunObservable
 
 
 
-    public void UpdateYearText()
+    void UpdateYearText()
     {
         int year = (int)yearSlider.value;
         yearText.text = year.ToString();
