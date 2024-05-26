@@ -16,6 +16,10 @@ Initially, we aimed to use real data on the total amount of CO2 emissions per ye
 ### Wireframes and Prototypes
 <img width="760" alt="Screenshot 2024-05-26 at 19 50 56" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/a35ddc37-ab20-4ff8-bb31-42f675c87b74">
 <img width="760" alt="Screenshot 2024-05-26 at 19 51 05" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/640fdf2e-d5fd-49b7-9694-e7199048115a">
+### User Journey
+Since our project is multi-user and supports collaboration, we decided on an approach where when one person interacts, the other user cannot interact with anything in the mixed-reality environment (with the virtual objects). As soon as one person stops interacting, the other user is allowed to interact. Here is one potential scenario for the users' journey in this app:
+<img width="1037" alt="Screenshot 2024-05-26 at 19 57 39" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/05ec069a-7e31-462c-ab26-18df10b2ac66">
+
 
 
 
