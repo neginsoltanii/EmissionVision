@@ -25,7 +25,14 @@ Since our project is multi-user and supports collaboration, we decided on an app
 One major challenge was integrating the data into Unity. Some values were in a format that Unity could not read directly. To address this, we conducted Exploratory Data Analysis (EDA) to identify and handle potential missing values and format inconsistencies before integrating the data into our project.
 
 
+## System description
+### Features
 
+- Mixed-reality Setup, showcasing a virtual earth model in the physical space
+- Real Data Integration with Unity, displaying CO2 emission ratios from countries worldwide across different years with color-coded countries on the globe
+- Interactive Controls, using controllers to rotate the globe and explore data by year
+- Real-time Collaboration using Photon Unity Networking (PUN), enabling analysts to collaborate and discuss data trends in real time.
+- Compatibility with Meta Quest headsets
 
 
 ![Sample Banner](./Media/colocated-block-toss.gif 'Unity SSA Sample')
