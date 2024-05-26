@@ -21,6 +21,9 @@ Initially, we aimed to use real data on the total amount of CO2 emissions per ye
 Since our project is multi-user and supports collaboration, we decided on an approach where when one person interacts, the other user cannot interact with anything in the mixed-reality environment (with the virtual objects). As soon as one person stops interacting, the other user is allowed to interact. Here is one potential scenario for the users' journey in this app:
 <img width="1037" alt="Screenshot 2024-05-26 at 19 57 39" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/05ec069a-7e31-462c-ab26-18df10b2ac66">
 
+### Challenges and Solutions
+One major challenge was integrating the data into Unity. Some values were in a format that Unity could not read directly. To address this, we conducted Exploratory Data Analysis (EDA) to identify and handle potential missing values and format inconsistencies before integrating the data into our project.
+
 
 
 
