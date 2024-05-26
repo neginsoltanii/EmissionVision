@@ -13,7 +13,7 @@ Emission Vision is a project designed for the Design for Complex and Dynamic Con
 ### Brainstorming
 In the initial brainstorming sessions, we focused on identifying areas that could be enhanced with digital twin and mixed reality technologies. We discussed the importance of analyzing CO2 emissions over the years and how this information could be useful in addressing environmental challenges. We explored how to incorporate the three main layers of a Digital Twin: Physical Entity, Virtual Entity, and Data. For the physical entity, we chose the phenomena of CO2 emissions on the planet Earth; hence, for the virtual entity, we decided on a virtual globe.
 Initially, we aimed to use real data on the total amount of CO2 emissions per year for each country. However, we realized that using the CO2 emission ratio would be more insightful as it accounts for population differences, providing a clearer picture of each country's impact.
-### Wireframes
+### Wireframes and Prototypes
 <img width="760" alt="Screenshot 2024-05-26 at 19 50 56" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/a35ddc37-ab20-4ff8-bb31-42f675c87b74">
 <img width="760" alt="Screenshot 2024-05-26 at 19 51 05" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/640fdf2e-d5fd-49b7-9694-e7199048115a">
 
