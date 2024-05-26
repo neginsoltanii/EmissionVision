@@ -1,3 +1,12 @@
+![DALL_E-2024-05-13-12 32 25-Logo-design-for-_EmissionVision_-without-any-text_cleanup-removebg-preview (1)](https://github.com/neginsoltanii/EmissionVision/assets/62497271/d59e3f13-007e-4f61-b623-8b8bffb25af1)
+
+# Emission Vision
+## _What if knowing the past, we can change the future?_
+
+## Introduction
+Emission Vision is a digital twin implemented in mixed reality and designed to provide an interactive and collaborative way of analyzing global CO2 emissions data and each country's contribution. Over the years, CO2 emissions have steadily climbed and continue to rise. Consequently, it is crucial for policymakers and environmental analysts to provide accurate projections based on data patterns. By integrating real-world environmental data into a 3D visualization, Emission Vision enables users to better explore, analyze, and compare the complex trends of CO2 emissions ratio around the world over time. Users can easily compare countries' contributions, gain insights from the data, and collaborate in real-time, allowing analysts to work together to address global environmental challenges.
+
+
 ![Sample Banner](./Media/colocated-block-toss.gif 'Unity SSA Sample')
 
 # Unity-SharedSpatialAnchors
