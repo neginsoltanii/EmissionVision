@@ -1,5 +1,5 @@
+![Screenshot_2024-05-26_at_18 10 22-removebg-preview](https://github.com/neginsoltanii/EmissionVision/assets/62497271/94852be7-0ef1-4839-820f-230862f296af)
 
-![file](https://github.com/neginsoltanii/EmissionVision/assets/62497271/9d39ce2a-975e-4285-92e1-86e81159da16)
 # Emission Vision
 ## _What if knowing the past, we can change the future?_
 
