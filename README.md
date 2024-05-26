@@ -1,5 +1,5 @@
-![DALL_E-2024-05-13-12 32 25-Logo-design-for-_EmissionVision_-without-any-text_cleanup-removebg-preview (1)](https://github.com/neginsoltanii/EmissionVision/assets/62497271/d59e3f13-007e-4f61-b623-8b8bffb25af1)
 
+![file](https://github.com/neginsoltanii/EmissionVision/assets/62497271/9d39ce2a-975e-4285-92e1-86e81159da16)
 # Emission Vision
 ## _What if knowing the past, we can change the future?_
 
