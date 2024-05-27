@@ -5,7 +5,7 @@
 //#define VR_EYE_RAY_CAST_SUPPORT  	 // Uncomment this line to support VREyeRayCast script - note that you must have already imported this script from Unity VR Samples
 //#define VR_GOOGLE				  	 // Uncomment this line to support Google VR SDK (pointer and controller touch)
 //#define VR_SAMSUNG_GEAR_CONTROLLER // Uncomment this line to support old Samsung Gear VR SDK (laser pointer)
-//#define VR_OCULUS               // Uncomment this line to support Oculus VR or GearVR controller using latest OVRInput manager
+#define VR_OCULUS               // Uncomment this line to support Oculus VR or GearVR controller using latest OVRInput manager
 
 //#define TRACE_CTL				   // Used by us to debug/trace some events
 using UnityEngine;

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CanvasCountryInfoManager : MonoBehaviour
 {
     public GameObject prefabCountryContainer;
     public Transform countryInfoContainer;
     public int maxNumberOfCountriesDisplayed = 3;
+    public GameObject info;
+
 
     private int numberOfCountriesDisplayed = 0;
 
@@ -27,7 +30,16 @@ public class CanvasCountryInfoManager : MonoBehaviour
     private void Update()
     {
         if(countryInfoContainer != null)
+        {
             numberOfCountriesDisplayed = countryInfoContainer.childCount;
+        }
+        
+
+        //Check if it should show description
+        if(numberOfCountriesDisplayed ==0)
+            info.SetActive(true);
+        else
+            info.SetActive(false);
 
         ///// TESTING!!
         //if(Input.GetKeyDown(KeyCode.I))

@@ -11,15 +11,15 @@ public class ExampleUserInput : MonoBehaviour
     void Update()
     {
         /// TESTING!!
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
             CanvasCountryInfoManager.instance.ShowNewCountryInCanvas("Iran", "45.93");
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
             CanvasCountryInfoManager.instance.ShowNewCountryInCanvas("China", "2784.444");
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
             CanvasCountryInfoManager.instance.ShowNewCountryInCanvas("Sweden", "5.6");
         }
