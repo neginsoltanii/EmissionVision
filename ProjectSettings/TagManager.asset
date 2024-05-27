@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Globe
+  - YearCollider
+  - YearSelector
   layers:
   - Default
   - TransparentFX
