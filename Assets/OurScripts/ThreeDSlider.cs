@@ -13,6 +13,7 @@ public class ThreeDSlider : MonoBehaviour
     void Start()
     {
         year = 2018;
+        globeControllerScript = GameObject.Find("GlobeController").GetComponent<GlobeControllerScript>();
 
     }
 

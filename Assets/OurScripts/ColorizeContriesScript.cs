@@ -56,7 +56,7 @@ public class ColorizeCountriesScript : MonoBehaviour
     private Color CalculateColor(float value, float min, float max)
     {
         float normalized = (value - min) / (max - min);
-        return Color.Lerp(Color.white, Color.red, normalized);
+        return Color.Lerp(Color.green, Color.red, normalized);
     }
 
     IEnumerator letDataBeRead(int yearVar, GameObject globe)
@@ -70,7 +70,7 @@ public class ColorizeCountriesScript : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.2f);
 
         var globeScript = globe.GetComponent<WorldMapGlobe>();
         float minCO2 = float.MaxValue;

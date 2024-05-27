@@ -86,7 +86,7 @@ public class GlobeControllerScript : MonoBehaviour
             return;
         }
 
-        var networkedSlider = PhotonNetwork.Instantiate(sliderPrefab.name, new Vector3(0, 0, 0), Quaternion.identity);
+        var networkedSlider = PhotonNetwork.Instantiate(sliderPrefab.name, new Vector3(0.184f, -0.5f, -0.5f), Quaternion.identity);
         Debug.Log("Instantiated Slider");
         slider = networkedSlider.gameObject;
 
@@ -96,6 +96,32 @@ public class GlobeControllerScript : MonoBehaviour
         if (photonGrabbable == null)
         {
             Debug.LogError("PhotonGrabbableObject component is missing on the instantiated slider.");
+            return;
+        }
+
+        photonGrabbable.TransferOwnershipToLocalPlayer();
+        Debug.Log("Ownership transferred to local player.");
+    }
+
+    private void SpawnUI()
+    {
+        Debug.Log("Spawning UI");
+        if (UIPrefab == null)
+        {
+            Debug.LogError("UI prefab is not assigned.");
+            return;
+        }
+
+        var networkedUI = PhotonNetwork.Instantiate(UIPrefab.name, new Vector3(0, 1, 4), Quaternion.identity);
+        Debug.Log("Instantiated UI");
+        UI = networkedUI.gameObject;
+
+        var photonGrabbable = networkedUI.GetComponent<PhotonGrabbableObject>();
+        UIID = networkedUI.GetComponent<PhotonPun.PhotonView>().ViewID;
+
+        if (photonGrabbable == null)
+        {
+            Debug.LogError("PhotonGrabbableObject component is missing on the instantiated UI.");
             return;
         }
 
