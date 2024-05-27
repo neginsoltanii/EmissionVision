@@ -51,8 +51,9 @@ public class CountryInfoManager : MonoBehaviour
         // Check for space key press to toggle panels (focus of the input system)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             HandleSpaceKey();
+
+
         }
     }
 

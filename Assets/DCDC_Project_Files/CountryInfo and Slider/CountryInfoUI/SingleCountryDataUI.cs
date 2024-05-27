@@ -14,6 +14,7 @@ public class SingleCountryDataUI : MonoBehaviour
         
     }
 
+
     public void SetData(string country, string co2)
     {
         // Set UI data

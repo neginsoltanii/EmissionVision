@@ -76,6 +76,9 @@ public class ColorizeCountriesScript : MonoBehaviour
         float minCO2 = float.MaxValue;
         float maxCO2 = float.MinValue;
 
+        
+
+
         foreach (DataFormatWorld entry in data)
         {
             if (entry.co2emissions < minCO2) minCO2 = entry.co2emissions;
