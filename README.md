@@ -86,6 +86,31 @@ __7. Verify Deployment:__
 
 By following these steps, you will be able to build and deploy your VR project to your headset directly from Unity. Make sure your headset is properly connected and recognized by Unity before starting the build process. 
 
+## Usage
+- To enter the scene, hold the left-hand controller in front of you to see the __Shared Spatial Anchor Samples__ menu and choose __Anchor Sharing Demo__ by pointing to it and pressing the trigger button on the right-hand controller.
+- To create a room, hold the left-hand controller in front of you and choose __Create New Room__ by pointing to it and pressing the trigger button on the right-hand controller.
+- To join a room, hold the left-hand controller in front of you and choose __Join Room__ by pointing to it and pressing the trigger button on the right-hand controller. Then, choose the room you want to join in a similar way.
+- To create a new anchor, select __Create New Anchor__ by pointing to it and pressing the trigger button on the right-hand controller.
+- Press the trigger button to place the anchor.
+- Select __Share Anchor__ and align to it by choosing __Align to Anchor__ or align to an already existing anchor the same way.
+- Press A on the right-hand controller to spawn the globe and the necessary assets.
+- To rotate the globe horizontally, use the right joystick on the controller.
+- To select a year, point towards the slider's little globe icon, press the right-hand controller's grip button and then drag it onto the desired year.
+- To select a country, point to the country on the globe with the right controller and press the trigger button to view CO2 emissions ratio data for that country (You can select up to three countries to display on the panel).
+ - To close the panel/panels, point to the __Close__ button on each panel with the right-hand controller and press the trigger. 
+
+#### Basic Use Case Scenario
+1. Put on your Meta Quest headset and launch the Emission Vision app.
+3. Create a new room or join an existing room.
+4. You can either create and share a spatial anchor so the other users can align to that or wait for a spatial anchor to appear and align to it.
+5. Read the instructions panel.
+6. Scroll through the available years using the slider.
+7. Select the desired year to update the globe with CO2 emissions data for that period.
+8. Rotate the globe to find your desired country.
+9. Select one country to view more detailed information.
+10. Select another country to compare its data side-by-side.
+11. Close the countries to go back to the instructions panel or select new countries to compare.
+
 ## References
 ### Unity Assets
 - [World Map Globe Edition 2]
