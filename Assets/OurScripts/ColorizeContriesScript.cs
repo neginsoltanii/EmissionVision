@@ -54,7 +54,7 @@ public class ColorizeCountriesScript : MonoBehaviour
     private Color CalculateColor(float value, float min, float max)
     {
         float normalized = (value - min) / (max - min);
-        return Color.Lerp(Color.green, Color.red, normalized);
+        return Color.Lerp(Color.white, Color.black, normalized);
     }
 
     IEnumerator letDataBeRead(int yearVar, GameObject globe)

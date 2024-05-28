@@ -36,6 +36,7 @@ public class GlobeControllerScript : MonoBehaviour
     public bool isCountryHighlighted = false;
     public int latestHighlightedCountryIndex = -1, latestTargetRegionIndex = -1;
     public string highlightedCountryName;
+    int targetCountryIndex, targetRegionIndex;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class GlobeControllerScript : MonoBehaviour
         Vector2 thumbstickInput = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
         if (thumbstickInput.magnitude > thumbstickThreshold || Input.GetKeyDown(KeyCode.N))
         {
+            
             rotationY = thumbstickInput.x;
             RotateRPC(rotationY);
         }
@@ -66,8 +68,9 @@ public class GlobeControllerScript : MonoBehaviour
         {
             Debug.Log("Country Selected: " + highlightedCountryName);
 
+            OnCountrySelected(targetCountryIndex, targetRegionIndex);
             // TODO: Send info to the Data Manager UI
-            
+
         }
 
         if (Input.GetKeyDown(KeyCode.V))
@@ -220,7 +223,7 @@ public class GlobeControllerScript : MonoBehaviour
         {
             Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
 
-            int targetCountryIndex, targetRegionIndex;
+            //int targetCountryIndex, targetRegionIndex;
             isCountryHighlighted = globeScript.GetCountryIndex(ray, out targetCountryIndex, out targetRegionIndex);
             if (isCountryHighlighted)
             {
@@ -236,7 +239,7 @@ public class GlobeControllerScript : MonoBehaviour
                     latestTargetRegionIndex = targetRegionIndex;
 
                     // Highlight the new country
-                    globeScript.ToggleCountryRegionSurfaceHighlight(latestHighlightedCountryIndex, latestTargetRegionIndex, Color.white, true);
+                    globeScript.ToggleCountryRegionSurfaceHighlight(latestHighlightedCountryIndex, latestTargetRegionIndex, Color.blue, true);
                     
                     // Get the name of the country
                     highlightedCountryName = globeScript.countries[targetCountryIndex].name;

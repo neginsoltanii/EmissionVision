@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8433603336126311449}
   - component: {fileID: 814751981687686240}
   - component: {fileID: 1292532822530760652}
+  - component: {fileID: -2583080106395244808}
   m_Layer: 0
   m_Name: SingleCountryData
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_GameObject: {fileID: 258636511145112296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 667528035930199302}
@@ -276,6 +277,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &-2583080106395244808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258636511145112296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4375dcc96b3fb7c46b584aade9bfb06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1091630702237929119
 GameObject:
   m_ObjectHideFlags: 0
