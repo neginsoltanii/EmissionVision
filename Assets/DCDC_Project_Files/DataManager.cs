@@ -15,6 +15,21 @@ public class DataFormatWorld
 public class DataManager : MonoBehaviour
 {
     public Dictionary<int, List<DataFormatWorld>> dataPerYear;
+    public Dictionary<int, Dictionary<string,float>> dataPerYearAndCountry;
+
+    // SINGLETON
+    public static DataManager instance;
+    public void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -56,6 +71,7 @@ public class DataManager : MonoBehaviour
         string colnameCO2 = "CO2EmissionRate (mt)";
 
         dataPerYear = new Dictionary<int, List<DataFormatWorld>>();
+        dataPerYearAndCountry = new Dictionary<int, Dictionary<string, float>>();
 
         foreach (Dictionary<string, object> row in data)
         {
@@ -72,6 +88,7 @@ public class DataManager : MonoBehaviour
                 rowCO2 = -1f;
             }
 
+            // Add data to the LIST of country,co2
             DataFormatWorld dataRow = new DataFormatWorld();
             dataRow.countryName = rowCountry;
             dataRow.co2emissions = rowCO2;
@@ -80,8 +97,16 @@ public class DataManager : MonoBehaviour
             {
                 dataPerYear[rowYear] = new List<DataFormatWorld>();
             }
-
             dataPerYear[rowYear].Add(dataRow);
+
+
+            /// Add data to the DICTIONARY per year AND per country
+
+            if (!dataPerYearAndCountry.ContainsKey(rowYear))
+            {
+                dataPerYearAndCountry[rowYear] = new Dictionary<string, float>();
+            }
+            dataPerYearAndCountry[rowYear].Add(rowCountry, rowCO2); ;
         }
     }
 
@@ -99,6 +124,21 @@ public class DataManager : MonoBehaviour
         }
         Debug.LogError("No data available for year " + year);
         return null;
+    }
+
+    public float GetCo2FromYearAndCountry(int year, string countryName)
+    {
+        if(dataPerYearAndCountry.ContainsKey(year))
+        {
+            float valueCo2;
+            bool dataExists = dataPerYearAndCountry[year].TryGetValue(countryName, out valueCo2);
+
+            if (dataExists)
+                return valueCo2;
+            else
+                return -1f;
+        }
+        return -1f;
     }
 }
 

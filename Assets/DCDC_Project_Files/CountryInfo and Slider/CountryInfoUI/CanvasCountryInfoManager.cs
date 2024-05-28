@@ -59,7 +59,10 @@ public class CanvasCountryInfoManager : MonoBehaviour
         //}
         if (Input.GetKeyDown(KeyCode.I))
         {
-            ShowNewCountryInCanvas("Sweden", "6.0");
+            int testYear = 2018;
+            string testCountry = "Sweden";
+            float testValueCo2 = DataManager.instance.GetCo2FromYearAndCountry(testYear, testCountry);
+            ShowNewCountryInCanvas(testCountry, testValueCo2.ToString());
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
@@ -80,8 +83,8 @@ public class CanvasCountryInfoManager : MonoBehaviour
             SingleCountryDataUI dataScript = go.GetComponent<SingleCountryDataUI>();
 
             //
-            gameObject.GetComponent<PhotonPun.PhotonView>().RPC("dataScriptSetData", RpcTarget.All, countryName, co2ratio);
-            //dataScript.SetData(countryName, co2ratio);
+            //gameObject.GetComponent<PhotonPun.PhotonView>().RPC("dataScript.SetData", RpcTarget.All, countryName, co2ratio);
+            dataScript.SetData(countryName, co2ratio);
         }
     }
 

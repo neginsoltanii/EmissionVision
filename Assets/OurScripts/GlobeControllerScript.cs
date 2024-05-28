@@ -1,4 +1,5 @@
 using Photon.Pun;
+using UnityEditor;
 using UnityEngine;
 using WPM;
 using PhotonPun = Photon.Pun;
@@ -29,10 +30,16 @@ public class GlobeControllerScript : MonoBehaviour
     private int UIID;
     public GameObject UIPrefab;
 
+    // Raycasting
+    [Header("Raycast to select country")]
+    public Transform rayOrigin;
+    public bool isCountryHighlighted = false;
+    public int latestHighlightedCountryIndex = -1, latestTargetRegionIndex = -1;
+    public string highlightedCountryName;
+
     void Start()
     {
         selectedYear = 2018;
-        globeScript.OnCountryPointerDown += OnCountrySelected;
     }
 
     void Update()
@@ -52,7 +59,18 @@ public class GlobeControllerScript : MonoBehaviour
             rotationY = thumbstickInput.x;
             RotateRPC(rotationY);
         }
+
+        // Check if a country is highlighted
+        OnTryCountrySelected();
+        if(isCountryHighlighted && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            Debug.Log("Country Selected: " + highlightedCountryName);
+
+            // TODO: Send info to the Data Manager UI
+            
+        }
     }
+
 
     private void SpawnGlobe()
     {
@@ -180,6 +198,45 @@ public class GlobeControllerScript : MonoBehaviour
             else
             {
                 Debug.LogWarning("No data found for year: " + selectedYear);
+            }
+        }
+    }
+
+    public void OnTryCountrySelected()
+    {
+        if (itemsSpawned)
+        {
+            Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
+
+            int targetCountryIndex, targetRegionIndex;
+            isCountryHighlighted = globeScript.GetCountryIndex(ray, out targetCountryIndex, out targetRegionIndex);
+            if (isCountryHighlighted)
+            {
+
+                // If the latest highlighted region changed, dehighlight the previous and highlight the new one.
+                if (latestHighlightedCountryIndex != targetCountryIndex)
+                {
+                    // Dehighlight
+                    globeScript.HideCountryRegionHighlights(false);
+                    
+                    // Save the latest country in global variables
+                    latestHighlightedCountryIndex = targetCountryIndex;
+                    latestTargetRegionIndex = targetRegionIndex;
+
+                    // Highlight the new country
+                    globeScript.ToggleCountryRegionSurfaceHighlight(latestHighlightedCountryIndex, latestTargetRegionIndex, Color.white, true);
+                    
+                    // Get the name of the country
+                    highlightedCountryName = globeScript.countries[targetCountryIndex].name;
+                }
+                //Debug.Log("Highlighted: "+ highlightedCountryName);
+            }
+            else
+            {
+                // If nothing is selected, dehighlight the latest one
+                globeScript.HideCountryRegionHighlights(false);
+                latestHighlightedCountryIndex = -1;
+                highlightedCountryName = "";
             }
         }
     }
