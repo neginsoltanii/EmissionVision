@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
 using Photon.Pun;
+using Photon.Realtime;
+using PhotonPun = Photon.Pun;
+using PhotonRealtime = Photon.Realtime;
 
 
 public class SingleCountryDataUI : MonoBehaviour
@@ -38,8 +41,16 @@ public class SingleCountryDataUI : MonoBehaviour
     {
         //Removes this object from the parent container
         // that has the Layout component
+        gameObject.GetComponent<PhotonPun.PhotonView>().RPC("destroyObject", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void destroyObject()
+    {
         Destroy(gameObject);
     }
+    
+
 
 
 }
