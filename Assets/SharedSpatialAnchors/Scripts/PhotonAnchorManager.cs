@@ -102,7 +102,7 @@ public class PhotonAnchorManager : PhotonPun.MonoBehaviourPunCallbacks
         }
 
         //For testing purposes
-        if (OVRInput.Get(OVRInput.Button.Two))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             OnCreateRoomButtonPressed();
         }

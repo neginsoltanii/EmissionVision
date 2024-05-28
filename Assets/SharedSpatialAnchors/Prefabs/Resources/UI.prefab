@@ -970,6 +970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SingleCountryData
       objectReference: {fileID: 0}
+    - target: {fileID: 1073567312560338679, guid: 57c381991e00f4c11835a64505223e12, type: 3}
+      propertyPath: sceneViewId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1106,6 +1110,14 @@ PrefabInstance:
       propertyPath: countryName
       value: 
       objectReference: {fileID: 758155128371141823}
+    - target: {fileID: 3034326958325294652, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
+      propertyPath: countryInfoContainer
+      value: 
+      objectReference: {fileID: 4791207521867365336}
+    - target: {fileID: 3034326958325294652, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
+      propertyPath: prefabCountryContainer
+      value: 
+      objectReference: {fileID: 258636511145112296, guid: f0004bcf39207ce4eb2e4c823c572f05, type: 3}
     - target: {fileID: 5245795108831918181, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1184,6 +1196,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5245795108831918181, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957277970404350862, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
+      propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7484365055862865305, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}

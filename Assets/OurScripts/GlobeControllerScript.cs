@@ -49,7 +49,7 @@ public class GlobeControllerScript : MonoBehaviour
             Debug.Log("Y button pressed on controller");
             SpawnGlobe();
             SpawnSlider();
-            SpawnUI();
+            //SpawnUI();
             itemsSpawned = true;
         }
 
@@ -69,6 +69,18 @@ public class GlobeControllerScript : MonoBehaviour
             // TODO: Send info to the Data Manager UI
             
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            spawnGlobeAndSlider();
+        }
+
+    }
+
+    void spawnGlobeAndSlider()
+    {
+        SpawnGlobe();
+        SpawnSlider();
     }
 
 
@@ -120,7 +132,7 @@ public class GlobeControllerScript : MonoBehaviour
 
         photonGrabbable.TransferOwnershipToLocalPlayer();
     }
-
+    /*
     private void SpawnUI()
     {
         Debug.Log("Spawning UI");
@@ -143,7 +155,7 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         photonGrabbable.TransferOwnershipToLocalPlayer();
-    }
+    }*/
 
     [PunRPC]
     void RotateRPC(float direction)

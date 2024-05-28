@@ -12,6 +12,99 @@ public class CanvasCountryInfoManager : MonoBehaviour
     public int maxNumberOfCountriesDisplayed = 3;
     public GameObject info;
 
+    private int numberOfCountriesDisplayed = 0;
+
+    // SINGLETON
+    public static CanvasCountryInfoManager instance;
+    public void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (countryInfoContainer != null)
+        {
+            numberOfCountriesDisplayed = countryInfoContainer.childCount;
+        }
+
+        //Check if it should show description
+        if (numberOfCountriesDisplayed == 0)
+            info.SetActive(true);
+        else
+            info.SetActive(false);
+
+        // Test Inputs
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            int testYear = 2018;
+            string testCountry = "Sweden";
+            float testValueCo2 = DataManager.instance.GetCo2FromYearAndCountry(testYear, testCountry);
+            gameObject.GetComponent<PhotonPun.PhotonView>().RPC("ShowNewCountryInCanvas", RpcTarget.All, testCountry, testValueCo2.ToString());
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            gameObject.GetComponent<PhotonPun.PhotonView>().RPC("ShowNewCountryInCanvas", RpcTarget.All, "Iran", "5.0");
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            gameObject.GetComponent<PhotonPun.PhotonView>().RPC("ShowNewCountryInCanvas", RpcTarget.All, "Sweden", "6.0");
+        }
+    }
+
+    [PunRPC]
+    public void ShowNewCountryInCanvas(string countryName, string co2ratio)
+    {
+        if (numberOfCountriesDisplayed < maxNumberOfCountriesDisplayed)
+        {
+            GameObject go = Instantiate(prefabCountryContainer, countryInfoContainer);
+            SingleCountryDataUI dataScript = go.GetComponent<SingleCountryDataUI>();
+
+            dataScript.SetData(countryName, co2ratio);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using Photon.Pun;
+using PhotonPun = Photon.Pun;
+using WPM;
+
+public class CanvasCountryInfoManager : MonoBehaviour
+{
+    public GameObject prefabCountryContainer;
+    public Transform countryInfoContainer;
+
+    //public GameObject countryInfoObj;
+
+    //public GameObject country;
+    public int maxNumberOfCountriesDisplayed = 3;
+    public GameObject info;
+
 
 
     private int numberOfCountriesDisplayed = 0;
@@ -37,7 +130,7 @@ public class CanvasCountryInfoManager : MonoBehaviour
             numberOfCountriesDisplayed = countryInfoContainer.childCount;
         }
         
-
+        //NEEDS RPC
         //Check if it should show description
         if(numberOfCountriesDisplayed ==0)
             info.SetActive(true);
@@ -75,17 +168,30 @@ public class CanvasCountryInfoManager : MonoBehaviour
 
     }
 
+    //[PunRPC]
     public void ShowNewCountryInCanvas(string countryName, string co2ratio)
     {
         if(numberOfCountriesDisplayed < maxNumberOfCountriesDisplayed)
         {
-            GameObject go = Instantiate(prefabCountryContainer, countryInfoContainer);
-            SingleCountryDataUI dataScript = go.GetComponent<SingleCountryDataUI>();
+            //GameObject go = Instantiate(prefabCountryContainer, countryInfoContainer);
+            //GameObject go = SpawnCountryAndInfoContainer();
+            //SingleCountryDataUI dataScript = go.GetComponent<SingleCountryDataUI>();
+
+            var netCountryContainer = PhotonNetwork.Instantiate(prefabCountryContainer.name, new Vector3(countryInfoContainer.position.x, countryInfoContainer.position.y, countryInfoContainer.position.z) , Quaternion.identity);
+            
+
+            //SingleCountryDataUI dataScript = netCountryContainer.GetComponent<SingleCountryDataUI>();
 
             //
-            //gameObject.GetComponent<PhotonPun.PhotonView>().RPC("dataScript.SetData", RpcTarget.All, countryName, co2ratio);
-            dataScript.SetData(countryName, co2ratio);
+            netCountryContainer.GetComponent<PhotonPun.PhotonView>().RPC("SetData", RpcTarget.All, countryName, co2ratio);
+            
+            //dataScript.SetData(countryName, co2ratio);
+            var photonGrabbable = netCountryContainer.GetComponent<PhotonGrabbableObject>();
+            photonGrabbable.TransferOwnershipToLocalPlayer();
         }
     }
 
-}
+
+
+
+}*/
