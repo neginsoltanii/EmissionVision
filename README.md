@@ -34,6 +34,76 @@ One major challenge was integrating the data into Unity. Some values were in a f
 - Real-time Collaboration using Photon Unity Networking (PUN), enabling analysts to collaborate and discuss data trends in real time.
 - Compatibility with Meta Quest headsets
 
+## Installation
+This section outlines the steps to set up your environment for developing Android VR applications using [Unity](https://unity.com/) 2022.3.
+
+### Step One: Setting Up Unity Hub
+1. Download and install Unity Hub from the [Unity download page](https://unity.com/download).
+2. Open Unity Hub after installation.
+
+### Step Two: Installing Unity Editor and Required Modules
+1. In Unity Hub, navigate to the 'Installs' tab and click on the 'Add' button to install a new version of the Unity Editor.
+2. Select Unity Editor LTS version 2022.3.Xf1 or higher from the list of available versions. You can find the recommended versions on the Unity releases page.
+3. During the installation setup, ensure to include the following modules:
+Microsoft Visual Studio IDE (for code editing).
+Android Build Support (libraries necessary for creating Android
+4. Follow the instructions to complete the Unity Editor installation.
+
+__Note:__ Since you are only working with a pre-built project and do not need to modify the code, you might not need to install Visual Studio. However, it is recommended that you install it if you need to troubleshoot or make adjustments to the code.
+
+### Step Three: Downloading the Emission Vision Repository
+1. Download the zip file from this [GitHub Repository](https://github.com/neginsoltanii/EmissionVision).
+2. Extract the zip file to a desired location on your disk.
+3. In Unity Hub, navigate to the Projects tab and click on the Add button.
+5. Select the folder where you extracted the project and add it to Unity Hub.
+
+### Building and Deploying the Project to Your Headset
+__1. Connect the Headset:__
+- Connect your VR headset to your computer using the appropriate cable.
+
+__2. Open Build Settings:__
+- In Unity, go to __File > Build Settings__.
+
+__3. Switch to Android Platform:__
+- In the __Build Settings__ window, if the platform is not already set to Android, select __Android__ from the list and click __Switch Platform__.
+
+__4. Select Run Device:__
+- In the __Build Settings__ window, find the __Run Device__ dropdown menu.
+- Select your connected VR headset from the dropdown list.
+- If your headset is not listed, click the __Refresh__ button and try again.
+
+__5. Enter Keystore Passwords:__
+- If prompted for a password during the build process, go to __File > Build Settings > Player Settings__.
+- In the __Player Settings__ panel, navigate to __Player__ and scroll down to find __Publishing Settings__.
+- Enter the password __123456__ in both the Project Keystore and Project Key fields.
+
+__6. Build and Run:__
+- Back in the __Build Settings__ window, click the __Build and Run__ button to start building the project.
+- Unity will build the project and deploy it to your connected VR headset.
+
+__7. Verify Deployment:__
+- Once the build process is completed, verify that the application is running correctly on your VR headset.
+
+By following these steps, you will be able to build and deploy your VR project to your headset directly from Unity. Make sure your headset is properly connected and recognized by Unity before starting the build process. 
+
+## References
+### Unity Assets
+- [World Map Globe Edition 2]
+
+### Documentations
+- [Spatial Anchors Overview]
+- [Shared Spatial Anchors Sample]
+
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+
+[World Map Globe Edition 2]: <https://assetstore.unity.com/packages/tools/gui/world-map-globe-edition-2-150643>
+
+[Spatial Anchors Overview]: <https://developer.oculus.com/documentation/unity/unity-spatial-anchors-overview/>
+
+[Shared Spatial Anchors Sample]:
+<https://developer.oculus.com/documentation/unity/unity-ssa-sf/>
 
 ![Sample Banner](./Media/colocated-block-toss.gif 'Unity SSA Sample')
 
