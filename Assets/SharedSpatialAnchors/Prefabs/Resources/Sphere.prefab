@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 795470853418837510}
   - component: {fileID: 5618610483124807314}
   - component: {fileID: 7063098929904743838}
-  - component: {fileID: 678688442668726463}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: YearSelector
@@ -379,15 +378,3 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &678688442668726463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8892535228966920652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4375dcc96b3fb7c46b584aade9bfb06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
