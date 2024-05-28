@@ -57,7 +57,7 @@ __Note:__ Since you are only working with a pre-built project and do not need to
 3. In Unity Hub, navigate to the Projects tab and click on the Add button.
 5. Select the folder where you extracted the project and add it to Unity Hub.
 
-### Building and Deploying the Project to Your Headset
+### Step Four: Building and Deploying the Project to Your Headset
 __1. Connect the Headset:__
 - Connect your VR headset to your computer using the appropriate cable.
 
