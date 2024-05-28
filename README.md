@@ -94,6 +94,11 @@ By following these steps, you will be able to build and deploy your VR project t
 - [Spatial Anchors Overview]
 - [Shared Spatial Anchors Sample]
 
+## Contributors
+- [__Negin Soltani__](https://www.linkedin.com/in/negin-soltani-5764911b9/)
+- [__Nicklas Bourelius__](https://www.linkedin.com/in/nicklas-bourelius-1362a9225/)
+- [__Tianyu Bao__](https://www.linkedin.com/in/amberbao/)
+
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
