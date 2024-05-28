@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
+using PhotonPun = Photon.Pun;
 
 public class CanvasCountryInfoManager : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class CanvasCountryInfoManager : MonoBehaviour
     public Transform countryInfoContainer;
     public int maxNumberOfCountriesDisplayed = 3;
     public GameObject info;
+
 
 
     private int numberOfCountriesDisplayed = 0;
@@ -54,6 +57,18 @@ public class CanvasCountryInfoManager : MonoBehaviour
         //{
         //    ShowNewCountryInCanvas("Sweden", "5.6");
         //}
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ShowNewCountryInCanvas("Sweden", "6.0");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            ShowNewCountryInCanvas("Iran", "5.0");
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ShowNewCountryInCanvas("Sweden", "6.0");
+        }
 
     }
 
@@ -64,7 +79,10 @@ public class CanvasCountryInfoManager : MonoBehaviour
             GameObject go = Instantiate(prefabCountryContainer, countryInfoContainer);
             SingleCountryDataUI dataScript = go.GetComponent<SingleCountryDataUI>();
 
-            dataScript.SetData(countryName, co2ratio);
+            //
+            gameObject.GetComponent<PhotonPun.PhotonView>().RPC("dataScriptSetData", RpcTarget.All, countryName, co2ratio);
+            //dataScript.SetData(countryName, co2ratio);
         }
     }
+
 }

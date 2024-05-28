@@ -9,9 +9,13 @@ public class GlobeControllerScript : MonoBehaviour
     public float rotateSpeed = 100f;
     private float step;
     private float rotationY;
-    public float thumbstickThreshold = 0.1f;  // Threshold for thumbstick usage
+    public float thumbstickThreshold = 0.1f;
     public int selectedYear;
     public ColorizeCountriesScript colorizeScript;
+    public DataManager dataManager;
+    public WorldMapGlobe globeScript;
+
+    public bool itemsSpawned;
 
     public GameObject globe;
     private int globeID;
@@ -28,22 +32,21 @@ public class GlobeControllerScript : MonoBehaviour
     void Start()
     {
         selectedYear = 2018;
+        globeScript.OnCountryPointerDown += OnCountrySelected;
     }
 
     void Update()
     {
-        // Check if the Y button on the controller is pressed to spawn the globe and slider
-        if (OVRInput.GetDown(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.One) && !itemsSpawned)
         {
             Debug.Log("Y button pressed on controller");
             SpawnGlobe();
             SpawnSlider();
+            SpawnUI();
+            itemsSpawned = true;
         }
 
-        // Get thumbstick input for rotation
         Vector2 thumbstickInput = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
-
-        // Check if thumbstick is being used or 'N' key is pressed
         if (thumbstickInput.magnitude > thumbstickThreshold || Input.GetKeyDown(KeyCode.N))
         {
             rotationY = thumbstickInput.x;
@@ -61,8 +64,8 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         var networkedGlobe = PhotonNetwork.Instantiate(globePrefab.name, new Vector3(0, 0, 0), Quaternion.identity);
-        Debug.Log("Instantiated Globe");
         globe = networkedGlobe.gameObject;
+        globeScript = globe.GetComponent<WorldMapGlobe>();
 
         var photonGrabbable = networkedGlobe.GetComponent<PhotonGrabbableObject>();
         globeID = networkedGlobe.GetComponent<PhotonPun.PhotonView>().ViewID;
@@ -74,7 +77,6 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         photonGrabbable.TransferOwnershipToLocalPlayer();
-        Debug.Log("Ownership transferred to local player.");
     }
 
     private void SpawnSlider()
@@ -87,7 +89,6 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         var networkedSlider = PhotonNetwork.Instantiate(sliderPrefab.name, new Vector3(0.184f, -0.5f, -0.5f), Quaternion.identity);
-        Debug.Log("Instantiated Slider");
         slider = networkedSlider.gameObject;
 
         var photonGrabbable = networkedSlider.GetComponent<PhotonGrabbableObject>();
@@ -100,7 +101,6 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         photonGrabbable.TransferOwnershipToLocalPlayer();
-        Debug.Log("Ownership transferred to local player.");
     }
 
     private void SpawnUI()
@@ -113,7 +113,6 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         var networkedUI = PhotonNetwork.Instantiate(UIPrefab.name, new Vector3(0, 1, 4), Quaternion.identity);
-        Debug.Log("Instantiated UI");
         UI = networkedUI.gameObject;
 
         var photonGrabbable = networkedUI.GetComponent<PhotonGrabbableObject>();
@@ -126,7 +125,6 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         photonGrabbable.TransferOwnershipToLocalPlayer();
-        Debug.Log("Ownership transferred to local player.");
     }
 
     [PunRPC]
@@ -157,7 +155,32 @@ public class GlobeControllerScript : MonoBehaviour
             return;
         }
 
-        Debug.Log("Updating year to: " + year);
+        selectedYear = year;
         colorizeScript.ColorizeCountries(year, globe);
+    }
+
+    private void OnCountrySelected(int countryIndex, int regionIndex)
+    {
+        var country = globeScript.GetCountry(countryIndex);
+        if (country != null)
+        {
+            var dataForYear = dataManager.GetDataForYear(selectedYear);
+            if (dataForYear != null)
+            {
+                var countryData = dataForYear.Find(c => c.countryName == country.name);
+                if (countryData != null)
+                {
+                    CanvasCountryInfoManager.instance.ShowNewCountryInCanvas(country.name, countryData.co2emissions.ToString());
+                }
+                else
+                {
+                    Debug.LogWarning("No data found for country: " + country.name + " in year: " + selectedYear);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No data found for year: " + selectedYear);
+            }
+        }
     }
 }

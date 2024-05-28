@@ -37,7 +37,7 @@ public class ColorizeCountriesScript : MonoBehaviour
 
         Debug.Log("This is almost last line but BEFORE RED CUBE within ColorizeCountries method in the Colorize Coutries script, all colours should have been applied now.");
 
-        var networkedredCube = PhotonNetwork.Instantiate(redCube.name, new Vector3(-1, 1, 0), Quaternion.identity);
+        //var networkedredCube = PhotonNetwork.Instantiate(redCube.name, new Vector3(-1, 1, 0), Quaternion.identity);
         Debug.Log("This is almost last line but AFTER RED CUBE within ColorizeCountries method in the Colorize Coutries script, all colours should have been applied now.");
 
 
@@ -46,10 +46,8 @@ public class ColorizeCountriesScript : MonoBehaviour
         //List<DataFormatWorld> data = dataManager.GetDataForYear(yearVar);
 
 
-
         StartCoroutine(letDataBeRead(yearVar, globe));
 
-        
 
     }
 
@@ -91,7 +89,7 @@ public class ColorizeCountriesScript : MonoBehaviour
             globeScript.ToggleCountrySurface(entry.countryName, true, color);
         }
 
-        var networkedblueCube = PhotonNetwork.Instantiate(blueCube.name, new Vector3(1, 1, 0), Quaternion.identity);
+        //var networkedblueCube = PhotonNetwork.Instantiate(blueCube.name, new Vector3(1, 1, 0), Quaternion.identity);
     }
 
 

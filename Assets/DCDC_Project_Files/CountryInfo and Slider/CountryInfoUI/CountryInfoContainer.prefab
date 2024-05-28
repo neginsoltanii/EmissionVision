@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5245795108831918181}
   - component: {fileID: 2544221884720395286}
   - component: {fileID: 3034326958325294652}
-  m_Layer: 5
+  - component: {fileID: 5957277970404350862}
+  m_Layer: 0
   m_Name: CountryInfoContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,3 +79,26 @@ MonoBehaviour:
   prefabCountryContainer: {fileID: 258636511145112296, guid: 57c381991e00f4c11835a64505223e12, type: 3}
   countryInfoContainer: {fileID: 5245795108831918181}
   maxNumberOfCountriesDisplayed: 3
+  info: {fileID: 0}
+--- !u!114 &5957277970404350862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484365055862865305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 1
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

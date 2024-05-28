@@ -236,10 +236,10 @@ MonoBehaviour:
   _positionConstraints:
     ConstraintsAreRelative: 1
     XAxis:
-      ConstrainAxis: 0
+      ConstrainAxis: 1
       AxisRange:
-        Min: 0
-        Max: 100
+        Min: -0.441
+        Max: 0.08
     YAxis:
       ConstrainAxis: 1
       AxisRange:
@@ -310,8 +310,8 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
+  Synchronization: 1
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5618610483124807314}

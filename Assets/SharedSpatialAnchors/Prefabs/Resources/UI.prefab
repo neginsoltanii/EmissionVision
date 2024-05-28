@@ -716,7 +716,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents: []
@@ -811,22 +811,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SingleCountryData
       objectReference: {fileID: 0}
-    - target: {fileID: 258636511145112296, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 258636511145112296, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1091630702237929119, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641734921704899179, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -858,18 +842,6 @@ PrefabInstance:
     - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
       propertyPath: m_SizeDelta.y
       value: -250
-      objectReference: {fileID: 0}
-    - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -919,97 +891,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3057069660165399042, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4495575397841895945, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6685518431034581068, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802999392678113201, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4539896592755605808, guid: 57c381991e00f4c11835a64505223e12, type: 3}
+      propertyPath: _pointable
+      value: 
+      objectReference: {fileID: 3734636250002452749}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6685518431034581068, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1511385869916438148}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57c381991e00f4c11835a64505223e12, type: 3}
---- !u!224 &2450345144996648099 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
-  m_PrefabInstance: {fileID: 280265108370459331}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6579327509128028857 stripped
+--- !u!114 &758155128371141823 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6389979102284327034, guid: 57c381991e00f4c11835a64505223e12, type: 3}
+  m_CorrespondingSourceObject: {fileID: 677283439177127548, guid: 57c381991e00f4c11835a64505223e12, type: 3}
   m_PrefabInstance: {fileID: 280265108370459331}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f7bb9da9b9644159a3a63b93197858, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6855613564653087375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6685518431034581068, guid: 57c381991e00f4c11835a64505223e12, type: 3}
+--- !u!224 &2450345144996648099 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2441773762840583776, guid: 57c381991e00f4c11835a64505223e12, type: 3}
   m_PrefabInstance: {fileID: 280265108370459331}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1511385869916438148
+--- !u!114 &8607434754273734626 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8399340777939789089, guid: 57c381991e00f4c11835a64505223e12, type: 3}
+  m_PrefabInstance: {fileID: 280265108370459331}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6855613564653087375}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f8f6e9e6f3e114b9bf9a57c2160615, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointable: {fileID: 3734636250002452749}
-  _whenRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenHover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenUnhover:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenSelect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6579327509128028857}
-        m_TargetAssemblyTypeName: SingleCountryDataUI, Assembly-CSharp
-        m_MethodName: CloseThisCountry
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _whenUnselect:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenMove:
-    m_PersistentCalls:
-      m_Calls: []
-  _whenCancel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &770404710396789693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1023,9 +940,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1493992409840653136}
     - target: {fileID: 3034326958325294652, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
-      propertyPath: description
+      propertyPath: co2ratio
       value: 
-      objectReference: {fileID: 6057405382842269190}
+      objectReference: {fileID: 8607434754273734626}
+    - target: {fileID: 3034326958325294652, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
+      propertyPath: countryName
+      value: 
+      objectReference: {fileID: 758155128371141823}
     - target: {fileID: 5245795108831918181, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1109,10 +1030,6 @@ PrefabInstance:
     - target: {fileID: 7484365055862865305, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
       propertyPath: m_Name
       value: CountryInfoContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 7484365055862865305, guid: ec8c81bf0044f431bae79381dcc93045, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
