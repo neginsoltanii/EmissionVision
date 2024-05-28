@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globeControllerScript: {fileID: 0}
+  sliderPhotonView: {fileID: 0}
 --- !u!114 &778367036782907371
 MonoBehaviour:
   m_ObjectHideFlags: 0

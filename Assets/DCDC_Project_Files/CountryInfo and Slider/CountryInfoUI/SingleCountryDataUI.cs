@@ -11,6 +11,7 @@ public class SingleCountryDataUI : MonoBehaviour
     public TMP_Text countryName;
     public TMP_Text co2ratio;
 
+
     
 
     // Start is called before the first frame update

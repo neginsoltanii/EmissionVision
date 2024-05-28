@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
@@ -8,13 +9,14 @@ public class ThreeDSlider : MonoBehaviour
 {
     public GlobeControllerScript globeControllerScript;
     int year;
+    public PhotonView sliderPhotonView;
 
     // Start is called before the first frame update
     void Start()
     {
         year = 2018;
         globeControllerScript = GameObject.Find("GlobeController").GetComponent<GlobeControllerScript>();
-
+        sliderPhotonView = this.GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -29,8 +31,15 @@ public class ThreeDSlider : MonoBehaviour
         {
             year = int.Parse(other.name);
             Debug.Log("Chose year: " + year.ToString());
-            globeControllerScript.updateYearForAll(year);
+            sliderPhotonView.RPC("ChangeYearRPC", RpcTarget.All, year);
+            
         }
+    }
+
+    [PunRPC]
+    void ChangeYearRPC(int year)
+    {
+        globeControllerScript.updateYearForAll(year);
     }
 
 
