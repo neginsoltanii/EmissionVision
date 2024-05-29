@@ -1,7 +1,9 @@
+using System;
 using Photon.Pun;
 using UnityEditor;
 using UnityEngine;
 using WPM;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using PhotonPun = Photon.Pun;
 using PhotonRealtime = Photon.Realtime;
 
@@ -37,6 +39,8 @@ public class GlobeControllerScript : MonoBehaviour
     public int latestHighlightedCountryIndex = -1, latestTargetRegionIndex = -1;
     public string highlightedCountryName;
     int targetCountryIndex, targetRegionIndex;
+
+    public CanvasCountryInfoManager canvasManagerScript;
 
     void Start()
     {
@@ -170,7 +174,7 @@ public class GlobeControllerScript : MonoBehaviour
         }
 
         step = rotateSpeed * direction * Time.deltaTime;
-        globe.transform.Rotate(0, step, 0);
+        globe.transform.Rotate(0, -step, 0);
     }
 
     public void updateYearForAll(int year)
@@ -203,7 +207,7 @@ public class GlobeControllerScript : MonoBehaviour
                 var countryData = dataForYear.Find(c => c.countryName == country.name);
                 if (countryData != null)
                 {
-                    CanvasCountryInfoManager.instance.ShowNewCountryInCanvas(country.name, countryData.co2emissions.ToString());
+                    canvasManagerScript.showNewCountries(country.name, countryData.co2emissions.ToString());
                     
                 }
                 else
@@ -217,6 +221,9 @@ public class GlobeControllerScript : MonoBehaviour
             }
         }
     }
+
+
+    
 
     public void OnTryCountrySelected()
     {

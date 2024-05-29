@@ -392,3 +392,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c12cf7ae58311499d554466ac125a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thumbstickThreshold: 0.1

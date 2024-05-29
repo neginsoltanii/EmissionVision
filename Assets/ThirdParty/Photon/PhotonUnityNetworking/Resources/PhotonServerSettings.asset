@@ -66,6 +66,8 @@ MonoBehaviour:
   - ShowNewCountryInCanvas
   - ChangeYearRPC
   - destroyObject
+  - DestroyObject
+  - showNewCountries
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
