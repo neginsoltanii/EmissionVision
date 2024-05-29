@@ -17,6 +17,23 @@ Initially, we aimed to use real data on the total amount of CO2 emissions per ye
 <img width="760" alt="Screenshot 2024-05-26 at 19 50 56" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/a35ddc37-ab20-4ff8-bb31-42f675c87b74">
 <img width="760" alt="Screenshot 2024-05-26 at 19 51 05" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/640fdf2e-d5fd-49b7-9694-e7199048115a">
 
+### User Personas
+__Persona 1: Environmental Analyst__
+- **Name:** Dr. Emma Green
+- **Age:** 45
+- **Occupation:** Senior Environmental Analyst
+- **Goals:** Analyze CO2 emission trends, make data-driven policy recommendations.
+- **Needs:** Accurate, easy-to-interpret data visualization, real-time collaboration with colleagues.
+- **Pain Points:** Difficulty in comparing CO2 data across different countries and years.
+
+__Persona 2: Policy Maker__
+- **Name:** John Smith
+- **Age:** 50
+- **Occupation:** Government Policy Maker
+- **Goals:**  Understand the impact of geometrical location and policies on CO2 emissions and create effective environmental regulations.
+- **Needs:** Comprehensive insights from data, clear visual comparisons.
+- **Pain Points:** Lack of accessible and understandable data for decision-making.
+
 ### User Journey
 Since our project is multi-user and supports collaboration, we decided on an approach where when one person interacts, the other user cannot interact with anything in the mixed-reality environment (with the virtual objects). As soon as one person stops interacting, the other user is allowed to interact. Here is one potential scenario for the users' journey in this app:
 <img width="1037" alt="Screenshot 2024-05-26 at 19 57 39" src="https://github.com/neginsoltanii/EmissionVision/assets/62497271/05ec069a-7e31-462c-ab26-18df10b2ac66">
