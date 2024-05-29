@@ -59,6 +59,11 @@ public class CanvasCountryInfoManager : MonoBehaviour
         }
     }
 
+    public void showInUI(string countryName, string co2ratio)
+    {
+        gameObject.GetComponent<PhotonPun.PhotonView>().RPC("ShowNewCountryInCanvas", RpcTarget.All, countryName, co2ratio);
+    }
+
     [PunRPC]
     public void ShowNewCountryInCanvas(string countryName, string co2ratio)
     {
@@ -70,6 +75,8 @@ public class CanvasCountryInfoManager : MonoBehaviour
             dataScript.SetData(countryName, co2ratio);
         }
     }
+
+
 }
 
 

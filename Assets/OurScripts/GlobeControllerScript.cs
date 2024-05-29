@@ -64,7 +64,7 @@ public class GlobeControllerScript : MonoBehaviour
 
         // Check if a country is highlighted
         OnTryCountrySelected();
-        if(isCountryHighlighted && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        if(isCountryHighlighted && OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
             Debug.Log("Country Selected: " + highlightedCountryName);
 
@@ -203,7 +203,7 @@ public class GlobeControllerScript : MonoBehaviour
                 var countryData = dataForYear.Find(c => c.countryName == country.name);
                 if (countryData != null)
                 {
-                    CanvasCountryInfoManager.instance.ShowNewCountryInCanvas(country.name, countryData.co2emissions.ToString());
+                    CanvasCountryInfoManager.instance.showInUI(country.name, countryData.co2emissions.ToString());
                 }
                 else
                 {
