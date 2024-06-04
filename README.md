@@ -151,3 +151,11 @@ By following these steps, you will be able to build and deploy your VR project t
 
 [Shared Spatial Anchors Sample]:
 <https://developer.oculus.com/documentation/unity/unity-ssa-sf/>
+
+[Portfolio Video Resources]:
+https://www.pexels.com/
+[Portfolio Backgroundmusics]:
+Cooking Sunday - 오준성
+Divination - Saint Of Sin
+171101 (Instrumental) - Chace
+Imagine (Original Mix) - MaHi
