@@ -136,13 +136,14 @@ By following these steps, you will be able to build and deploy your VR project t
 - [Spatial Anchors Overview]
 - [Shared Spatial Anchors Sample]
 
-- [Portfolio Video Resources]: <https://www.pexels.com/>
+### Portfolio Video
+- Resources: <https://www.pexels.com/>
 
-- [Portfolio Backgroundmusics]:
-Cooking Sunday - 오준성
-Divination - Saint Of Sin
-171101 (Instrumental) - Chace
-Imagine (Original Mix) - MaHi
+- Background Musics:
+1. Cooking Sunday - 오준성
+2. Divination - Saint Of Sin
+3. 171101 (Instrumental) - Chace
+4. Imagine (Original Mix) - MaHi
 
 ## Contributors
 - [__Negin Soltani__](https://www.linkedin.com/in/negin-soltani-5764911b9/)
